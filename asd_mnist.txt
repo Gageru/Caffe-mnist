@@ -1,0 +1,6 @@
+convert_mnist_data D:\Create_csv\mnist\t10k-images-idx3-ubyte\t10k-images.idx3-ubyte D:\Create_csv\mnist\t10k-labels-idx1-ubyte\t10k-labels.idx1-ubyte D:\Create_csv\mnist\mnist_test_lmdb
+convert_mnist_data D:\Create_csv\mnist\train-images-idx3-ubyte\train-images.idx3-ubyte D:\Create_csv\mnist\train-labels-idx1-ubyte\train-labels.idx1-ubyte D:\Create_csv\mnist\mnist_train_lmdb
+caffe train --solver=D:/Create_csv/mnist/lenet_auto_solver.prototxt
+compute_image_mean ./mnist/mnist_train_lmdb ./mnist/mean_mnist.binaryproto
+compute_image_mean ./mnist/mnist_test_lmdb ./mnist/mean_mnist.binaryproto
+classification D:/Create_csv/mnist/lenet_deploy.prototxt D:/Create_csv/mnist/mnist_iter_10000.caffemodel D:/Create_csv/mnist/mean_mnist.binaryproto D:/Create_csv/mnist/syn_mnist.txt D:/Create_csv/mnist/140.jpg
